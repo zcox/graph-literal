@@ -22,13 +22,15 @@ class GraphImpl[N](edges: Edge[N]*) extends Graph[N] {
   def -(n: N) {}
   def +(edge: Edge[N]) {}
   def -(edge: Edge[N]) {}
+  
+  override def toString = "GraphImpl(" + edges.mkString(", ") + ")"
 }
 
 sealed trait Edge[N]
 case class DirectedEdge[N](n1: N, n2: N) extends Edge[N]
 case class UndirectedEdge[N](n1: N, n2: N) extends Edge[N]
 
-//TODO replace this with com.pongr.graph package object?  so users just import com.pongr.graph._
+//TODO include these in a com.pongr.graph package object?  so users just import com.pongr.graph._
 object Implicits {
   final class DirectedAssoc[N](val n1: N) {
     @inline def -->(n2: N): DirectedEdge[N] = DirectedEdge(n1, n2)

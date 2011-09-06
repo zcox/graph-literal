@@ -1,6 +1,7 @@
 package com.pongr.graph
 
 import org.specs2.mutable._
+import com.pongr.graph._
 
 class GraphSpec extends Specification {
   "The Graph factory" should {
